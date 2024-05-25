@@ -1,0 +1,29 @@
+[
+    {
+        "orderName": "Josh",
+        "orderType": "Drive-Thru",
+        "orderTime": "13:24",
+        "entrees": "1 Cheeseburger",
+        "sides": "1 Medium Fries",
+        "drinks": "1 Large Coke",
+        "other": "1 Vanilla Ice Cream Cone"
+    },
+    {
+        "orderName": "Mary",
+        "orderType": "Mobile",
+        "orderTime": "17:42",
+        "entrees": "2 Double Cheeseburgers, 2 Chicken Sandwiches",
+        "sides": "4 Small Onion Rings",
+        "drinks": "2 Small Sprites, 1 Medium Fanta, 1 Large Diet Coke",
+        "other": "none"
+    },
+    {
+        "orderName": "Greg",
+        "orderType": "In-Person",
+        "orderTime": "20:19",
+        "entrees": "1 10-piece Chicken Nuggets",
+        "sides": "1 Large Curly Fries",
+        "drinks": "1 Medium Strawberry Shake",
+        "other": "1 Chocolate Chip Cookie"
+    }
+]

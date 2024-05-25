@@ -1,0 +1,95 @@
+//////////////////////////////
+// LOCALHOST TESTING ROUTES //
+//////////////////////////////
+
+### Get all orders
+GET http://localhost:8080/orders
+
+
+### Get contacts by id
+GET http://localhost:8080/contacts/66500d5ce8225dbef9cf3b8c
+###
+GET http://localhost:8080/contacts/66500d5ce8225dbef9cf3b8b
+###
+GET http://localhost:8080/contacts/66500d5ce8225dbef9cf3b8d
+
+
+### Create order
+POST http://localhost:8080/orders HTTP/1.1
+content-type: application/json
+
+{
+    "orderName": "",
+    "orderType": "",
+    "orderTime": "",
+    "entrees": "",
+    "sides": "",
+    "drinks": "",
+    "other": ""
+}
+
+
+### Update order (set an id)
+PUT http://localhost:8080/orders/ HTTP/1.1
+content-type: application/json
+
+{
+    "orderName": "",
+    "orderType": "",
+    "orderTime": "",
+    "entrees": "",
+    "sides": "",
+    "drinks": "",
+    "other": ""
+}
+
+
+### Delete contact (set an id)
+DELETE http://localhost:8080/orders/ HTTP/1.1
+
+
+///////////////////////////
+// RENDER TESTING ROUTES //
+///////////////////////////
+
+
+### Get all contacts
+GET https://lesson2-76r3.onrender.com/contacts
+
+
+### Get contacts by id
+GET https://lesson2-76r3.onrender.com/contacts/6636bf0f61ab12640dfa00a4
+###
+GET https://lesson2-76r3.onrender.com/contacts/6636bf0f61ab12640dfa00a5
+###
+GET https://lesson2-76r3.onrender.com/contacts/6636bf0f61ab12640dfa00a6
+
+
+### Create contact
+POST https://lesson2-76r3.onrender.com/contacts HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Archie",
+    "lastName": "Giard",
+    "email": "archiethedog@test.com",
+    "favoriteColor": "Gray",
+    "birthday": "11/17/13"
+}
+
+
+### Update contact (id is set to Gwen's contact here)
+PUT https://lesson2-76r3.onrender.com/contacts/6636bf0f61ab12640dfa00a4 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Gwen",
+    "lastName": "Giard",
+    "email": "gwenny@test.com",
+    "favoriteColor": "Green",
+    "birthday": "01/23/07"
+}
+
+
+### Delete contact (note: change the id based on which contact you want to delete)
+DELETE https://lesson2-76r3.onrender.com/contacts/663fb3793c587184c7eb455d HTTP/1.1
