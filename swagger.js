@@ -5,7 +5,7 @@ const doc = {
       title: 'Fast Food Order API',
       description: 'This API allows you to retrieve orders placed by customers, as well as create new ones and update or delete existing ones'
     },
-    host: 'somewhere.onrender.com',
+    host: 'week5-8-ags6.onrender.com',
     schemes: ['https'],
   };
   
