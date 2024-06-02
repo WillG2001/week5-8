@@ -2,23 +2,26 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAllOrders = async (req, res) => {
-    const result = await mongodb.getDb().db().collection('orders').find();
-    result.toArray().then((lists) => {
+    mongodb.getDb().db().collection('orders').find().toArray((err, lists) => {
+        if (err) {
+            res.status(400).json({ message: err });
+        }
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
     });
 };
 
 const getOneOrder = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('The order id must be valid to return an order.')
+    }
     const orderId = new ObjectId(req.params.id);
-    const result = await mongodb
-        .getDb()
-        .db()
-        .collection('orders')
-        .find({_id: orderId});
-    result.toArray().then((lists) => {
+    mongodb.getDb().db().collection('orders').find({_id: orderId}).toArray((err, result) => {
+        if (err) {
+            res.status(400).json({ message: err });
+        }
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists[0]);
+        res.status(200).json(result[0]);
     });
 };
 
@@ -43,6 +46,9 @@ const newOrder = async (req, res) => {
 };
 
 const updateOrder = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('The order id must be valid to update an order.')
+    }
     const orderId = new ObjectId(req.params.id);
     const order = {
         orderName: req.body.orderName,
@@ -64,11 +70,14 @@ const updateOrder = async (req, res) => {
 };
 
 const deleteOrder = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('The order id must be valid to delete an order.')
+    }
     const orderId = new ObjectId(req.params.id);
     const response = await mongodb.getDb().db().collection('orders').deleteOne({_id: orderId}, true);
     console.log(response);
     if (response.deletedCount > 0) {
-        res.status(204).send();
+        res.status(200).send();
     }
     else {
         res.status(500).json(response.error || 'There was an error while trying to delete the order.');

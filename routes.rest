@@ -34,18 +34,18 @@ PUT http://localhost:8080/orders/ HTTP/1.1
 content-type: application/json
 
 {
-    "orderName": "",
-    "orderType": "",
-    "orderTime": "",
-    "entrees": "",
-    "sides": "",
-    "drinks": "",
-    "other": ""
+    "orderName": "Brian",
+    "orderType": "in person",
+    "orderTime": "14:31",
+    "entrees": "2 Chicken Sandwiches",
+    "sides": "2 Waffle Fries",
+    "drinks": "1 Lemonade",
+    "other": "N/A"
 }
 
 
 ### Delete order (set an id)
-DELETE http://localhost:8080/orders/ HTTP/1.1
+DELETE http://localhost:8080/orders/66526dad07c8337a33ffe197 HTTP/1.1
 
 
 ///////////////////////////
@@ -81,19 +81,19 @@ content-type: application/json
 
 
 ### Update order (set an id)
-PUT https://week5-8-ags6.onrender.com/orders/ HTTP/1.1
+PUT https://week5-8-ags6.onrender.com/orders/66526d272944f1f6a18e20d7 HTTP/1.1
 content-type: application/json
 
 {
-    "orderName": "",
-    "orderType": "",
-    "orderTime": "",
-    "entrees": "",
-    "sides": "",
-    "drinks": "",
-    "other": ""
+    "orderName": "Sam",
+    "orderType": "Online",
+    "orderTime": "19:49",
+    "entrees": "20 Piece Chicken Nuggets",
+    "sides": "1 Curly Fries",
+    "drinks": "1 Large Sprite",
+    "other": "1 BBQ Sauce"
 }
 
 
 ### Delete order (set an id)
-DELETE https://week5-8-ags6.onrender.com/orders/ HTTP/1.1
+DELETE https://week5-8-ags6.onrender.com/orders/66526d272944f1f6a18e20d7 HTTP/1.1
