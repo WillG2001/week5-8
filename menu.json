@@ -1,0 +1,18 @@
+[
+    {
+        "itemName": "Cheeseburger",
+        "itemPrice": "2.99"
+    },
+    {
+        "itemName": "Chicken Sandwich",
+        "itemPrice": "3.99"
+    },
+    {
+        "itemName": "French Fries",
+        "itemPrice": "1.49"
+    },
+    {
+        "itemName": "Coke",
+        "itemPrice": "1.99"
+    }
+]
