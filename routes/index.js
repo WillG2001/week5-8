@@ -1,8 +1,11 @@
 const express = require('express');
-const router = express.Router();
+const ordersRouter = express.Router();
+const menuRouter = express.Router();
 
-router.use('/orders', require('./orders'));
+ordersRouter.use('/orders', require('./orders'));
+ordersRouter.use('/', require('./swagger'));
 
-router.use('/', require('./swagger'));
+menuRouter.use('/menu', require('./menu'));
+menuRouter.use('/', require('./swagger'));
 
-module.exports = router;
+module.exports = ordersRouter, menuRouter;

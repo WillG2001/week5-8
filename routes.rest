@@ -2,6 +2,10 @@
 // LOCALHOST TESTING ROUTES //
 //////////////////////////////
 
+
+// ORDERS //
+
+
 ### Get all orders
 GET http://localhost:8080/orders
 
@@ -48,9 +52,52 @@ content-type: application/json
 DELETE http://localhost:8080/orders/66526dad07c8337a33ffe197 HTTP/1.1
 
 
+// MENU ITEMS //
+
+
+### Get all items
+GET http://localhost:8080/menu
+
+
+### Get items by id
+GET http://localhost:8080/menu/6662871b246e709bb14e6608
+###
+GET http://localhost:8080/menu/6662871b246e709bb14e6609
+###
+GET http://localhost:8080/menu/6662871b246e709bb14e660a
+
+
+### Create item
+POST http://localhost:8080/menu HTTP/1.1
+content-type: application/json
+
+{
+    "itemName": "",
+    "itemPrice": ""
+}
+
+
+### Update item (set an id)
+PUT http://localhost:8080/menu/ HTTP/1.1
+content-type: application/json
+
+{
+    "itemName": "",
+    "itemPrice": ""
+}
+
+
+### Delete item (set an id)
+DELETE http://localhost:8080/menu/ HTTP/1.1
+
+
+
 ///////////////////////////
 // RENDER TESTING ROUTES //
 ///////////////////////////
+
+
+// ORDERS //
 
 
 ### Get all orders
@@ -97,3 +144,43 @@ content-type: application/json
 
 ### Delete order (set an id)
 DELETE https://week5-8-ags6.onrender.com/orders/66526d272944f1f6a18e20d7 HTTP/1.1
+
+
+// MENU ITEMS //
+
+
+### Get all items
+GET https://week5-8-ags6.onrender.com/menu
+
+
+### Get items by id
+GET https://week5-8-ags6.onrender.com/menu/6662871b246e709bb14e6608
+###
+GET https://week5-8-ags6.onrender.com/menu/6662871b246e709bb14e6609
+###
+GET https://week5-8-ags6.onrender.com/menu/6662871b246e709bb14e660a
+
+
+### Create item
+POST https://week5-8-ags6.onrender.com/menu HTTP/1.1
+content-type: application/json
+
+{
+    "itemName": "",
+    "itemPrice": ""
+}
+
+
+### Update item (set an id)
+PUT https://week5-8-ags6.onrender.com/menu/ HTTP/1.1
+content-type: application/json
+
+{
+    "itemName": "",
+    "itemPrice": ""
+}
+
+
+### Delete item (set an id)
+DELETE https://week5-8-ags6.onrender.com/menu/ HTTP/1.1
+
