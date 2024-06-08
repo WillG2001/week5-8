@@ -74,5 +74,4 @@ const deleteItem = async (req, res) => {
     }
 };
 
-module.exports = {getAllItems, getOneItem, newItem,
-                    updateItem, deleteItem};
+module.exports = {getAllItems, getOneItem, newItem, updateItem, deleteItem};

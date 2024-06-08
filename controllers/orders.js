@@ -84,5 +84,4 @@ const deleteOrder = async (req, res) => {
     }
 };
 
-module.exports = {getAllOrders, getOneOrder, newOrder,
-                    updateOrder, deleteOrder};
+module.exports = {getAllOrders, getOneOrder, newOrder, updateOrder, deleteOrder};
