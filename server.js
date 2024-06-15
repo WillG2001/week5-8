@@ -8,11 +8,11 @@ const { auth } = require('express-openid-connect');
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret: 'a long, randomly-generated string stored in env',
-  baseURL: 'https://week5-8-ags6.onrender.com',
-  clientID: 'GZPFeQBiwhhPmihPVrFaqEPebfrHLYcC',
-  issuerBaseURL: 'https://dev-a4848ehnu7a4o0ew.us.auth0.com'
-};
+  secret: process.env.SECRET,
+  baseURL: process.env.BASE_URL || 'https://week5-8-ags6.onrender.com',
+  clientID: process.env.CLIENT_ID,
+  issuerBaseURL: process.env.ISSUER_BASE_URL
+}
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
