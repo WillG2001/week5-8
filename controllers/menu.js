@@ -2,27 +2,30 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAllItems = async (req, res) => {
-    mongodb.getDb().db().collection('menu').find().toArray((err, lists) => {
-        if (err) {
-            res.status(400).json({ message: err });
-        }
+    try {
+        const lists = await mongodb.getDb().db().collection('menu').find().toArray();
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
-    });
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
 };
 
 const getOneItem = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('The item id must be valid to return an item.')
+        return res.status(400).json('The item id must be valid to return an item.');
     }
     const itemId = new ObjectId(req.params.id);
-    mongodb.getDb().db().collection('menu').find({_id: itemId}).toArray((err, result) => {
-        if (err) {
-            res.status(400).json({ message: err });
+    try {
+        const result = await mongodb.getDb().db().collection('menu').find({ _id: itemId }).toArray();
+        if (result.length === 0) {
+            return res.status(404).json('Item not found');
         }
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(result[0]);
-    });
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
 };
 
 const newItem = async (req, res) => {
@@ -30,48 +33,54 @@ const newItem = async (req, res) => {
         itemName: req.body.itemName,
         itemPrice: req.body.itemPrice
     };
-    const response = await mongodb.getDb().db().collection('menu').insertOne(item);
-    if (response.acknowledged) {
-        res.status(201).json(response);
-    }
-    else
-    {
-        res.status(500).json(response.error || 'There was an error while trying to add the item.');
+    try {
+        const response = await mongodb.getDb().db().collection('menu').insertOne(item);
+        if (response.acknowledged) {
+            res.status(201).json(response);
+        } else {
+            res.status(500).json('There was an error while trying to add the item.');
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 };
 
 const updateItem = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('The item id must be valid to update an item.')
+        return res.status(400).json('The item id must be valid to update an item.');
     }
     const itemId = new ObjectId(req.params.id);
     const item = {
         itemName: req.body.itemName,
         itemPrice: req.body.itemPrice
     };
-    const response = await mongodb.getDb().db().collection('menu').replaceOne({_id: itemId}, item);
-    console.log(response);
-    if (response.modifiedCount > 0) {
-        res.status(204).send();
-    }
-    else {
-        res.status(500).json(response.error || 'There was an error while trying to update the item.');
+    try {
+        const response = await mongodb.getDb().db().collection('menu').replaceOne({ _id: itemId }, item);
+        if (response.modifiedCount > 0) {
+            res.status(204).send();
+        } else {
+            res.status(500).json('There was an error while trying to update the item.');
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 };
 
 const deleteItem = async (req, res) => {
     if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('The order id must be valid to delete an item.')
+        return res.status(400).json('The item id must be valid to delete an item.');
     }
     const itemId = new ObjectId(req.params.id);
-    const response = await mongodb.getDb().db().collection('menu').deleteOne({_id: itemId}, true);
-    console.log(response);
-    if (response.deletedCount > 0) {
-        res.status(200).send();
-    }
-    else {
-        res.status(500).json(response.error || 'There was an error while trying to delete the item.');
+    try {
+        const response = await mongodb.getDb().db().collection('menu').deleteOne({ _id: itemId });
+        if (response.deletedCount > 0) {
+            res.status(200).send();
+        } else {
+            res.status(500).json('There was an error while trying to delete the item.');
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 };
 
-module.exports = {getAllItems, getOneItem, newItem, updateItem, deleteItem};
+module.exports = { getAllItems, getOneItem, newItem, updateItem, deleteItem };
