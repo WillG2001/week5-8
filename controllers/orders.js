@@ -1,3 +1,7 @@
+// this controller code has been modified from last week's code, I received help from class teammate
+// Joe Burner and we decided to have ChatGPT see what was causing my connection issues; this code
+// implements ChatGPT's changes
+
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 

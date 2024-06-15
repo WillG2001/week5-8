@@ -1,3 +1,5 @@
+// much of the authentication code just comes from Auth0's documentation
+
 require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser');
