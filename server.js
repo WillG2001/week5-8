@@ -5,6 +5,9 @@ const mongodb = require('./db/connect');
 
 const { auth } = require('express-openid-connect');
 
+const app = express();
+const port = process.env.PORT || 8080;
+
 const config = {
   authRequired: false,
   auth0Logout: true,
@@ -21,9 +24,6 @@ app.use(auth(config));
 app.get('/', (req, res) => {
   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 });
-
-const port = process.env.PORT || 8080;
-const app = express();
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
